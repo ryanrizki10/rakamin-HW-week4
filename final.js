@@ -1,39 +1,37 @@
-// 1. Fungsi untuk membuat array dengan 100 nilai acak antara 1 hingga 50
+// 1. Mmebuat fungsi Array acak dari 1 - 100
 function setRandomArray() {
   const randomArray = [];
   for (let i = 0; i < 100; i++) {
-    randomArray.push(Math.floor(Math.random() * 50) + 1);
+    randomArray.push(Math.floor(Math.random()*50)+1);
   }
   return randomArray;
 }
-// menjalankan array acak
 const randomArray = setRandomArray();
 console.log("Random Array dimulai dari Index 0:", randomArray);
 
-// 2. Fungsi untuk memecah array menjadi array genap dan ganjil
-function splitArrayByIndex(arr) {
+// 2. Memecah array menjadi array genap dan ganjil
+function splitArrayByIndex(ray) {
     const evenArray = [];
     const oddArray = [];
-    for (let i = 0; i < arr.length; i++) {
+    for (let i = 0; i < ray.length; i++) {
     if (i % 2 === 0) {
-        evenArray.push(arr[i]);
+        evenArray.push(ray[i]);
     } else {
-      oddArray.push(arr[i]);
+      oddArray.push(ray[i]);
     }
   }
   return { evenArray, oddArray };
 }
-// Membagi array menjadi array genap dan ganjil
-const { evenArray, oddArray } = splitArrayByIndex(randomArray);
+const{ evenArray, oddArray } = splitArrayByIndex(randomArray);
 console.log("Array Genap:", evenArray);
 console.log("Array Ganjil:", oddArray);
 
-// 3. Fungsi untuk menghitung nilai minimum dalam array
-function calculateMin(arr) {
-    let min = arr[0];
-    for (let i = 1; i < arr.length; i++) {
-        if (arr[i] < min) {
-            min = arr[i];
+// 3. Menghitung nilai minimum dalam array
+function calculateMin(ray) {
+    let min = ray[0];
+    for (let i = 1; i < ray.length; i++) {
+        if (ray[i] < min) {
+            min = ray[i];
         }
     }
     return min;
@@ -45,12 +43,12 @@ console.log("Min Array Genap", minEven)
 console.log("Min Array Ganjil", minOdd)
 console.log("\n")
 
-// 4. Fungsi untuk menghitung nilai maksimum dalam array
-function calculateMax(arr) {
-  let max = arr[0];
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] > max) {
-      max = arr[i];
+// 4. Menghitung nilai maksimum dalam array
+function calculateMax(ray) {
+  let max = ray[0];
+  for (let i = 1; i < ray.length; i++) {
+    if (ray[i] > max) {
+      max = ray[i];
     }
 }
 return max;
@@ -63,10 +61,10 @@ console.log("Max Array Ganjil", maxOdd)
 console.log("\n")
 
 // 5. Fungsi untuk menghitung total nilai dalam array
-function calculateTotal(arr) {
+function calculateTotal(ray) {
     let total = 0;
-    for (let i = 0; i < arr.length; i++) {
-        total += arr[i];
+    for (let i = 0; i < ray.length; i++) {
+        total += ray[i];
     }
     return total;
 }
@@ -77,10 +75,10 @@ console.log("Total Array Genap", totalEven)
 console.log("Total Array Ganjil", totalOdd)
 console.log("\n")
 
-// 6. Fungsi untuk menghitung rata-rata dalam array
-function calculateAverage(arr) {
-  const total = calculateTotal(arr);
-  return total / arr.length;
+// 6. Menghitung rata-rata dalam array
+function calculateAverage(ray) {
+  const total = calculateTotal(ray);
+  return total / ray.length;
 }
 const averageEven = calculateAverage(evenArray);
 const averageOdd = calculateAverage(oddArray);
@@ -92,55 +90,56 @@ console.log("\n")
 
 
 // 7. Fungsi untuk membandingkan dua array
-function compareArrays(arr1, arr2) {
-  const min1 = calculateMin(arr1);
-  const max1 = calculateMax(arr1);
-  const total1 = calculateTotal(arr1);
-  const average1 = calculateAverage(arr1);
+function compareArrays(ray1, ray2) {
+  
+  const min1 = calculateMin(ray1);
+  const max1 = calculateMax(ray1);
+  const total1 = calculateTotal(ray1);
+  const average1 = calculateAverage(ray1);
 
-  const min2 = calculateMin(arr2);
-  const max2 = calculateMax(arr2);
-  const total2 = calculateTotal(arr2);
-  const average2 = calculateAverage(arr2);
+  const min2 = calculateMin(ray2);
+  const max2 = calculateMax(ray2);
+  const total2 = calculateTotal(ray2);
+  const average2 = calculateAverage(ray2);
 
-  let comparisonResult = "";
+  let compareResult = "";
   if (min1 > min2) {
-    comparisonResult += "Min lebih besar array genap\n";
+    compareResult += "Min lebih besar array genap\n";
   } else if (min2 > min1) {
-    comparisonResult += "Min lebih besar array ganjil\n";
+    compareResult += "Min lebih besar array ganjil\n";
   } else {
-    comparisonResult +=
+    compareResult +=
       "Min memiliki nilai sama antara array genap dan ganjil\n";
   }
 
   if (max1 > max2) {
-    comparisonResult += "Max lebih besar array genap\n";
+    compareResult += "Max lebih besar array genap\n";
   } else if (max2 > max1) {
-    comparisonResult += "Max lebih besar array ganjil\n";
+    compareResult += "Max lebih besar array ganjil\n";
   } else {
-    comparisonResult +=
+    compareResult +=
       "Max memiliki nilai sama antara array genap dan ganjil\n";
   }
 
   if (total1 === total2) {
-    comparisonResult +=
+    compareResult +=
       "Total memiliki nilai sama antara array genap dan ganjil\n";
   } else {
-    comparisonResult +=
+    compareResult +=
       "Total memiliki nilai berbeda antara array genap dan ganjil\n";
   }
 
   if (average1 > average2) {
-    comparisonResult += "Rata-rata lebih besar array genap\n";
+    compareResult += "Rata-rata lebih besar array genap\n";
   } else if (average2 > average1) {
-    comparisonResult += "Rata-rata lebih besar array ganjil\n";
+    compareResult += "Rata-rata lebih besar array ganjil\n";
   } else {
-    comparisonResult +=
+    compareResult +=
       "Rata-rata memiliki nilai sama antara array genap dan ganjil\n";
   }
 
-  return comparisonResult;
+  return compareResult;
 }
 
-const comparisonResult = compareArrays(evenArray, oddArray);
-console.log("Hasil Perbandingan:\n" + comparisonResult);
+const compareResult = compareArrays(evenArray, oddArray);
+console.log("Hasil Perbandingan:\n" + compareResult);
